@@ -1,5 +1,4 @@
 "use client"
-
 import Image from "next/image";
 import { useAppDispatch , useAppSelector } from "@/lib/hooks";
 import { increment , decrement , incrementByAmount } from "@/lib/CounterSlice/counter";
