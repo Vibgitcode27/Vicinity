@@ -1,9 +1,10 @@
 /* Main App */
-.header {
-    padding-top: 12px;
-    background: #ffff;
-}
 
+.header {
+    padding-top: 20px;
+    background: #d5daff70;
+}
+/* #28282a */
 .content {
     margin: 24px 16px;
     padding: 20px;
@@ -25,8 +26,12 @@
     font-weight: 500;
 }
 
+.sidebar-icons {
+    color : #cccccc !important;
+}
+
 .ant-menu-item-selected {
-    background-color: #4f6f52 !important;
+    background-color: #4d5bf7c1 !important;
     color: #fff !important;
 }
 
@@ -44,4 +49,9 @@
     color: #4f6f52;
     margin: 30px 0;
     font-size: 1.5rem;
+}
+
+.ant-btn:hover {
+    color: #4f6f52 !important;
+    border-color: #4f6f52 !important;   
 }

@@ -2,9 +2,12 @@
 import "../../styles/dashboard.css"
 import React, { useState } from 'react';
 import { MenuFoldOutlined , MenuUnfoldOutlined } from '@ant-design/icons';
-import { Layout, Button, Collapse } from 'antd';
+import { Layout, Button, Flex } from 'antd';
 import { Sidebar } from "../../(components)/Sidebar"
 import { MainHeader } from "../../(components)/Header"
+import { MainContent } from "../../(components)/MainContent"
+import { SideContent } from "../../(components)/SideContent"
+
 
 const { Header, Content, Sider } = Layout;
 export default function Dashboard() {
@@ -13,7 +16,7 @@ export default function Dashboard() {
   return (
     <Layout>
         <Sider
-          theme='light'
+          style={{ backgroundColor : "#fff"}}
           trigger={null} 
           collapsible 
           collapsed={collapsed} 
@@ -30,7 +33,12 @@ export default function Dashboard() {
         <Header className='header'>
           <MainHeader/>
         </Header>
-        <Content className='content'></Content>
+        <Content className='content'>
+          <Flex gap="large">
+            <MainContent/>
+            <SideContent/>
+          </Flex>
+        </Content>
       </Layout>
     </Layout>
   );
