@@ -2,7 +2,7 @@
 
 .header {
     padding-top: 20px;
-    background: #d5daff70;
+    background: #f1f2ff70;
 }
 /* #28282a */
 .content {
@@ -54,4 +54,19 @@
 .ant-btn:hover {
     color: #4f6f52 !important;
     border-color: #4f6f52 !important;   
+}
+
+/* Content */
+
+.content {
+    /* background-color: #d5daff70; */
+}
+
+/* Profile */
+
+.profile-icons {
+    padding: 8px;
+    color: #292c6f;
+    border: 2px solid #e3e3e383;
+    border-radius: 7px;
 }
