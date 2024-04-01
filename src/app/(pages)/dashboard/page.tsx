@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { MenuFoldOutlined , MenuUnfoldOutlined } from '@ant-design/icons';
 import { Layout, Button, Collapse } from 'antd';
 import { Sidebar } from "../../(components)/Sidebar"
+import { MainHeader } from "../../(components)/Header"
 
 const { Header, Content, Sider } = Layout;
 export default function Dashboard() {
@@ -26,7 +27,9 @@ export default function Dashboard() {
             />
         </Sider>
       <Layout>
-        <Header className='header'></Header>
+        <Header className='header'>
+          <MainHeader/>
+        </Header>
         <Content className='content'></Content>
       </Layout>
     </Layout>

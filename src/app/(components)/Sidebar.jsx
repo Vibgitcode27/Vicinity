@@ -1,6 +1,6 @@
 import { Flex, Menu } from "antd";
 import React from "react";
-import { AliwangwangFilled , UserOutlined , LoginOutlined , OrderedListOutlined , CarryOutOutlined } from "@ant-design/icons";
+import { AliwangwangFilled , UserOutlined , LogoutOutlined , OrderedListOutlined , CarryOutOutlined , ProfileOutlined, SettingOutlined } from "@ant-design/icons";
 
 const items = [
     {
@@ -15,15 +15,24 @@ const items = [
     } ,
     {
         key : 3 ,
-        icon : <UserOutlined/> ,
+        icon : <OrderedListOutlined/> ,
         label : "ToDo"
     } ,
     {
         key : 4 ,
-        icon : <UserOutlined/> ,
-        label : "Dashboard"
+        icon : <ProfileOutlined/> ,
+        label : "Profile"
     } ,
-
+    {
+        key : 5 ,
+        icon : <SettingOutlined/> ,
+        label : "Setting" 
+    } ,
+    {
+        key : 6 ,
+        icon : <LogoutOutlined/> ,
+        label : "Logout" 
+    } ,
 ]
 
 export function Sidebar() {
@@ -38,10 +47,7 @@ export function Sidebar() {
                 mode="inline"
                 defaultSelectedKeys={['1']}
                 className="menu-bar"
-                items={[{
-                    key : "1" ,
-                    icon : <
-                }]}
+                items= {items}
             >
             </Menu>
         </div>

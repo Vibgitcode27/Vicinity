@@ -18,6 +18,19 @@
     left: 10px;
 }
 
+.menu-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.ant-menu-item-selected {
+    background-color: #4f6f52 !important;
+    color: #fff !important;
+}
+
+
 /* Sider */
 .sider {
     height: 100vh;
