@@ -3,7 +3,7 @@ import { Avatar } from 'antd';
 import "../../styles/dashboard.css"
 import React, { useState } from 'react';
 import { MenuFoldOutlined , MenuUnfoldOutlined } from '@ant-design/icons';
-import { Layout, Button, Flex } from 'antd';
+import { Layout, Button, Flex , Card } from 'antd';
 import { AliwangwangFilled , BellOutlined , MessageOutlined } from '@ant-design/icons';
 
 import { Sidebar } from "../../(components)/Sidebar"
@@ -46,8 +46,10 @@ export default function Dashboard() {
         </Content>
       </Layout>
     
-      <Sider
+      <Card
         style={{
+          borderTopLeftRadius : "20px" ,
+          borderBottomLeftRadius : "20px" ,
           backgroundColor: "#fff",
           display: "flex",
           alignContent: "center",
@@ -56,7 +58,7 @@ export default function Dashboard() {
           width: "auto" // Set width to "auto" for automatic adjustment
         }}
       >
-        <Flex align="center" justify="space-between" gap="20px">
+        <Flex align="center" justify="space-between" gap="40px">
           <BellOutlined className='profile-icons' />
           <Avatar
             size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
@@ -64,7 +66,7 @@ export default function Dashboard() {
           />
           <MessageOutlined className='profile-icons' />
         </Flex>
-      </Sider>
+      </Card>
     </Layout>
 
   );
