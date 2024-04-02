@@ -27,11 +27,12 @@
 }
 
 .sidebar-icons {
-    color : #cccccc !important;
+    color : #b5b5e693 !important;
+    font-size: 20px !important;
 }
 
 .ant-menu-item-selected {
-    background-color: #4d5bf7c1 !important;
+    background-color: #0015f6c1 !important;
     color: #fff !important;
 }
 

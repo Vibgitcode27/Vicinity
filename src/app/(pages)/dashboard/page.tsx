@@ -1,11 +1,11 @@
 "use client"
-import { Avatar } from 'antd';
+import { Avatar, Typography } from 'antd';
 import "../../styles/dashboard.css"
 import React, { useState } from 'react';
 import { MenuFoldOutlined , MenuUnfoldOutlined } from '@ant-design/icons';
-import { Layout, Button, Flex , Card } from 'antd';
+import { Layout, Button, Flex , Card , Progress } from 'antd';
 import { AliwangwangFilled , BellOutlined , MessageOutlined } from '@ant-design/icons';
-
+import asset1 from "../../assets/asset1.jpg"
 import { Sidebar } from "../../(components)/Sidebar"
 import { MainHeader } from "../../(components)/Header"
 import { MainContent } from "../../(components)/MainContent"
@@ -60,11 +60,24 @@ export default function Dashboard() {
       >
         <Flex align="center" justify="space-between" gap="40px">
           <BellOutlined className='profile-icons' />
-          <Avatar
-            size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
-            icon={<AliwangwangFilled />}
-          />
+          <Flex gap="small" wrap="wrap">
+            <Progress type="circle" style={{  padding : "2px"}} percent={80} format={() => { return (
+              <Avatar
+                size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 90 }}
+                // icon={<AliwangwangFilled />}
+                src={asset1.src}
+              />
+            )}}/>
+          </Flex>
           <MessageOutlined className='profile-icons' />
+        </Flex>
+        <Flex align='center' justify='center' vertical style={{margin : "10px"}}>
+          <Typography.Title  level={4} style={{ padding : "0" , margin : "0" , fontWeight : 600}}>Vibhor Phalke</Typography.Title>
+          <Typography.Text>Full Stack developer</Typography.Text>
+        </Flex>
+        <Flex align='center' justify="space-between" >
+          <Typography.Title style={{ marginTop : "10px"}}  level={5} >Current Projects</Typography.Title>
+          <Typography.Text>More</Typography.Text>
         </Flex>
       </Card>
     </Layout>
