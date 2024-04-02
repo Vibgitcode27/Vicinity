@@ -5,7 +5,10 @@ import React, { useState } from 'react';
 import { MenuFoldOutlined , MenuUnfoldOutlined } from '@ant-design/icons';
 import { Layout, Button, Flex , Card , Progress } from 'antd';
 import { AliwangwangFilled , BellOutlined , MessageOutlined } from '@ant-design/icons';
+
 import asset1 from "../../assets/asset1.jpg"
+import asset2 from "../../assets/asset5.webp"
+
 import { Sidebar } from "../../(components)/Sidebar"
 import { MainHeader } from "../../(components)/Header"
 import { MainContent } from "../../(components)/MainContent"
@@ -78,6 +81,28 @@ export default function Dashboard() {
         <Flex align='center' justify="space-between" >
           <Typography.Title style={{ marginTop : "10px"}}  level={5} >Current Projects</Typography.Title>
           <Typography.Text>More</Typography.Text>
+        </Flex>
+        <Flex>
+              <Card style= {{
+                marginRight : "10px" ,
+                borderRadius : "20px" ,
+                backgroundImage: `url(${asset2.src})`, // Use the imported image variable
+                backgroundSize: 'cover', // Optional: Set background size to cover for better fitting
+                backgroundPosition: 'center', // Optional: Set background position to center
+              }}>
+                <Typography.Title style={{ marginTop : "10px"}}  level={5} >Current Projects</Typography.Title>
+                <Typography.Text>More</Typography.Text>
+                <Flex align='center' justify='center' style={{ marginTop : "100px"}}>
+                  <Typography.Text>50%</Typography.Text>
+                </Flex> 
+              </Card>
+              <Card style={{ marginRight : "10px" , backgroundColor : "#bff8ff" , borderRadius : "20px"}}>
+                <Typography.Title style={{ marginTop : "10px"}}  level={5} >Current Projects</Typography.Title>
+                <Typography.Text>More</Typography.Text>
+                <Flex align='center' justify='center' style={{ marginTop : "100px"}}>
+                  <Typography.Text>50%</Typography.Text>
+                </Flex>
+              </Card>
         </Flex>
       </Card>
     </Layout>
