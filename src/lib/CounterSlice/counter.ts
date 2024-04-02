@@ -1,13 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface CounterState {
-  value: number
+  value: number,
+  api: any
 }
 
 const initialState: CounterState = {
   value: 0,
+  api: {}
 }
+
+export const fetchApiData = createAsyncThunk("fetchApiData", async () => {
+  let result = await fetch("https://jsonplaceholder.typicode.com/todos/1")
+  result = await result.json()
+  return result;
+})
 
 export const counterSlice = createSlice({
   name: 'counter',
@@ -23,6 +31,11 @@ export const counterSlice = createSlice({
       state.value += action.payload
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(fetchApiData.fulfilled, (state, action) => {
+      state.api = action.payload
+    })
+  }
 })
 
 export const { increment, decrement, incrementByAmount } = counterSlice.actions
