@@ -5,6 +5,7 @@ import { authMiddleware } from "@clerk/nextjs";
 export default authMiddleware({
   // Allow signed out users to access the specified routes:
   // publicRoutes: ['/anyone-can-visit-this-route'],
+  ignoredRoutes : ['/' , '/welcome']
 });
  
 export const config = {
@@ -14,5 +15,6 @@ export const config = {
     "/((?!.+\\.[\\w]+$|_next).*)",
     // Re-include any files in the api or trpc folders that might have an extension
     "/(api|trpc)(.*)"
+
   ]
 };
