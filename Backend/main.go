@@ -7,6 +7,7 @@ import (
 	"github.com/WH055_MindNotWorking/db"
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
+	"log"
 	"net/http"
 )
 
@@ -373,6 +374,62 @@ func GetUserInfo(w http.ResponseWriter, r *http.Request) {
 	w.Write(userJSON)
 }
 
+func GetBookingUsername(w http.ResponseWriter, r *http.Request) {
+	var peep Dude
+	err := json.NewDecoder(r.Body).Decode(&peep)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	client := db.NewClient()
+	if err := client.Prisma.Connect(); err != nil {
+		http.Error(w, "Failed to connect to database", http.StatusInternalServerError)
+		return
+	}
+	defer func() {
+		if err := client.Prisma.Disconnect(); err != nil {
+			log.Println("Error disconnecting from database:", err)
+		}
+	}()
+	ctx := context.Background()
+	foundUser, err := client.User.FindUnique(
+		db.User.Username.Equals(peep.Username),
+	).Exec(ctx)
+	if err != nil {
+		http.Error(w, "Failed to find user", http.StatusInternalServerError)
+		return
+	}
+	if foundUser == nil {
+		http.Error(w, "User not found", http.StatusNotFound)
+		return
+	}
+	books, err := client.Book.FindMany(
+		db.Book.UserID.Equals(foundUser.UserID),
+	).Exec(ctx)
+	if err != nil {
+		http.Error(w, "Failed to fetch books", http.StatusInternalServerError)
+		return
+	}
+	var booksResponse []BookResponse
+	for _, book := range books {
+		booksResponse = append(booksResponse, BookResponse{
+			BookID: book.BookID,
+			Title:  book.Title,
+		})
+	}
+
+	booksJSON, err := json.Marshal(booksResponse)
+	if err != nil {
+		log.Println("Failed to marshal books JSON:", err)
+		http.Error(w, "Failed to marshal JSON", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(booksJSON)
+}
+
 func main() {
 	r := mux.NewRouter()
 
@@ -383,7 +440,7 @@ func main() {
 	r.HandleFunc("/createPost", CreatePost).Methods("POST")
 	r.HandleFunc("/createBooking", CreateBook).Methods("POST")
 	r.HandleFunc("/getUserInfo", GetUserInfo).Methods("GET")
-
+	r.HandleFunc("/getBookingUsername", GetBookingUsername).Methods("GET")
 	corsHandler := cors.Default().Handler(r)
 
 	http.ListenAndServe(":4000", corsHandler)
