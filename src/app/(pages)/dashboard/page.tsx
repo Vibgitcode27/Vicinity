@@ -95,8 +95,8 @@ export default function Dashboard() {
   };
   if(count === 1)
   {
-    fetchData();
-    count --;
+    // fetchData();
+    count = count - 1;
   }
 
 
