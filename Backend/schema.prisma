@@ -16,4 +16,17 @@ model User {
   Bio            String
   Email          String @unique
   Username       String @unique
+  posts          Post[]
+}
+
+model Post {
+  PostID                     String @id @default(cuid())
+  Picture                    String
+  Description                String
+  Duration                   String
+  RequirementsAndRestriction String
+  Location                   String
+  Cost                       String
+  user                       User   @relation(fields: [UserID], references: [UserID])
+  UserID                     String
 }
