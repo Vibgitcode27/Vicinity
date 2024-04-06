@@ -12,7 +12,7 @@ import { MainContent } from "../../(components)/MainContent"
 import { SideProfile } from '../../(components)/SideProfile';
 
 import { Menu } from "antd";
-import { WindowsFilled, RocketFilled, CompassFilled, FireFilled, } from "@ant-design/icons";
+import { RocketFilled, LogoutOutlined, CompassFilled, FireFilled, } from "@ant-design/icons";
 import { Explore } from "@/app/(components)/Explore";
 import { ForYou } from "@/app/(components)/ForYou";
 import { Logout } from "@/app/(components)/Logout";
@@ -20,7 +20,7 @@ import { Logout } from "@/app/(components)/Logout";
 const items = [
   {
     key: 1,
-    icon: <WindowsFilled className="sidebar-icons" />,
+    icon: <RocketFilled className="sidebar-icons" />,
     label: "Dashboard"
   },
   {
@@ -35,7 +35,7 @@ const items = [
   },
   {
     key: 4,
-    icon: <RocketFilled className="sidebar-icons" />,
+    icon: <LogoutOutlined className="sidebar-icons" />,
     label: "Logout"
   },
 ]
