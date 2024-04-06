@@ -13,12 +13,13 @@ export function VicinityPage() {
     const cost = useAppSelector(state => state.getPostUser.Cost);
     const description = useAppSelector(state => state.getPostUser.Description);
     const location = useAppSelector(state => state.getPostUser.Location);
+    const Picture = useAppSelector(state => state.getPostUser.Picture)
 
     return (
         <Flex align='center' justify='center' style={{ width: "100%", height: "auto" }}>
             <Card style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <Flex align='center' justify='center' style={{ width: "70%", marginLeft: "140px" }}>
-                    <Image style={{ borderRadius: "20px" }} src={asset1.src}></Image>
+                    <Image style={{ borderRadius: "20px" }} src={Picture}></Image>
                 </Flex>
                 <Flex align='center' justify='center' vertical>
                     <Typography.Title level={2} style={{ color: "#0015f6c1", marginTop: "30px" }}>{title}</Typography.Title>
