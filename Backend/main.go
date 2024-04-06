@@ -277,6 +277,53 @@ func CreatePost(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Post created successfully"))
 }
 
+func CreateBook(w http.ResponseWriter, r *http.Request) {
+	var book Book
+	err := json.NewDecoder(r.Body).Decode(&book)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	client := db.NewClient()
+	if err := client.Prisma.Connect(); err != nil {
+		http.Error(w, "Failed to connect to database", http.StatusInternalServerError)
+		return
+	}
+	defer func() {
+		if err := client.Prisma.Disconnect(); err != nil {
+			panic(err)
+		}
+	}()
+
+	ctx := context.Background()
+	foundUser, err := client.User.FindUnique(
+		db.User.Username.Equals(book.Username),
+	).Exec(ctx)
+	if err != nil {
+		http.Error(w, "Failed to find user", http.StatusInternalServerError)
+		return
+	}
+	if foundUser == nil {
+		http.Error(w, "User not found", http.StatusNotFound)
+		return
+	}
+	createdBook, err := client.Book.CreateOne(
+		db.Book.Title.Set(book.Title),
+		db.Book.Post.Link(db.Post.PostID.Equals(book.PostID)),
+		db.Book.User.Link(db.User.UserID.Equals(foundUser.UserID)),
+	).Exec(ctx)
+	if err != nil {
+		http.Error(w, "Failed to create book", http.StatusInternalServerError)
+		return
+	}
+	result, _ := json.MarshalIndent(createdBook, "", "  ")
+	fmt.Printf("Created book: %s\n", result)
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	w.Write([]byte("Book created successfully"))
+}
+
 func main() {
 	r := mux.NewRouter()
 
@@ -285,6 +332,7 @@ func main() {
 	r.HandleFunc("/getPostsByCity", GetPostByCity).Methods("GET")
 	r.HandleFunc("/getPostsByUsername", GetPostByUsername).Methods("GET")
 	r.HandleFunc("/createPost", CreatePost).Methods("POST")
+	r.HandleFunc("/createBooking", CreateBook).Methods("POST")
 
 	corsHandler := cors.Default().Handler(r)
 
