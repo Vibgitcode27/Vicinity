@@ -1,0 +1,54 @@
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+generator db {
+  provider = "go run github.com/steebchen/prisma-client-go"
+}
+
+model User {
+  UserID         String    @id @default(cuid())
+  LastName       String
+  FirstName      String
+  ProfilePicture String
+  Location       String
+  Bio            String
+  Email          String    @unique
+  Username       String    @unique
+  posts          Post[]
+  comments       Comment[]
+  books          Book[]
+}
+
+model Post {
+  PostID                     String    @id @default(cuid())
+  Picture                    String
+  Description                String
+  Duration                   String
+  RequirementsAndRestriction String
+  Location                   String
+  Cost                       String
+  comments                   Comment[]
+  user                       User      @relation(fields: [UserID], references: [UserID])
+  UserID                     String
+  books                      Book[]
+}
+
+model Comment {
+  CommentID String @id @default(cuid())
+  Content   String
+  user      User   @relation(fields: [UserID], references: [UserID])
+  UserID    String
+  post      Post   @relation(fields: [PostID], references: [PostID])
+  PostID    String
+}
+
+model Book {
+  BookID String @id @default(cuid())
+  Title  String
+  post   Post   @relation(fields: [PostID], references: [PostID])
+  PostID String
+  user   User   @relation(fields: [UserID], references: [UserID])
+  UserID String
+}
