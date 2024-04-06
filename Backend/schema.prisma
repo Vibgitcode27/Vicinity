@@ -8,25 +8,36 @@ generator db {
 }
 
 model User {
-  UserID         String @id @default(cuid())
+  UserID         String    @id @default(cuid())
   LastName       String
   FirstName      String
   ProfilePicture String
   Location       String
   Bio            String
-  Email          String @unique
-  Username       String @unique
+  Email          String    @unique
+  Username       String    @unique
   posts          Post[]
+  comments       Comment[]
 }
 
 model Post {
-  PostID                     String @id @default(cuid())
+  PostID                     String    @id @default(cuid())
   Picture                    String
   Description                String
   Duration                   String
   RequirementsAndRestriction String
   Location                   String
   Cost                       String
-  user                       User   @relation(fields: [UserID], references: [UserID])
+  comments                   Comment[]
+  user                       User      @relation(fields: [UserID], references: [UserID])
   UserID                     String
+}
+
+model Comment {
+  CommentID String @id @default(cuid())
+  Content   String
+  user      User   @relation(fields: [UserID], references: [UserID])
+  UserID    String
+  post      Post   @relation(fields: [PostID], references: [PostID])
+  PostID    String
 }
