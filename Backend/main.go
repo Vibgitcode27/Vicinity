@@ -220,6 +220,63 @@ func GetPostByUsername(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func CreatePost(w http.ResponseWriter, r *http.Request) {
+	var post Post
+	err := json.NewDecoder(r.Body).Decode(&post)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	client := db.NewClient()
+	if err := client.Prisma.Connect(); err != nil {
+		http.Error(w, "Failed to connect to database", http.StatusInternalServerError)
+		return
+	}
+	defer func() {
+		if err := client.Prisma.Disconnect(); err != nil {
+			panic(err)
+		}
+	}()
+
+	ctx := context.Background()
+
+	foundUser, err := client.User.FindUnique(
+		db.User.Username.Equals(post.Username),
+	).Exec(ctx)
+	if err != nil {
+		http.Error(w, "Failed to find user", http.StatusInternalServerError)
+		return
+	}
+
+	if foundUser == nil {
+		http.Error(w, "User not found", http.StatusNotFound)
+		return
+	}
+
+	createdPost, err := client.Post.CreateOne(
+		db.Post.Picture.Set(post.Picture),
+		db.Post.Description.Set(post.Description),
+		db.Post.Duration.Set(post.Duration),
+		db.Post.RequirementsAndRestriction.Set(post.RequirementsAndRestriction),
+		db.Post.Location.Set(post.Location),
+		db.Post.Cost.Set(post.Cost),
+		db.Post.User.Link(db.User.UserID.Equals(foundUser.UserID)),
+	).Exec(ctx)
+
+	if err != nil {
+		http.Error(w, "Failed to create post", http.StatusInternalServerError)
+		return
+	}
+
+	result, _ := json.MarshalIndent(createdPost, "", "  ")
+	fmt.Printf("Created post: %s\n", result)
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	w.Write([]byte("Post created successfully"))
+}
+
 func main() {
 	r := mux.NewRouter()
 
@@ -227,6 +284,7 @@ func main() {
 	r.HandleFunc("/getPosts", GetAllPosts).Methods("GET")
 	r.HandleFunc("/getPostsByCity", GetPostByCity).Methods("GET")
 	r.HandleFunc("/getPostsByUsername", GetPostByUsername).Methods("GET")
+	r.HandleFunc("/createPost", CreatePost).Methods("POST")
 
 	corsHandler := cors.Default().Handler(r)
 
