@@ -8,18 +8,18 @@
 
   
   
-<h2>🧐 Features</h2>
+<h2>Features</h2>
 
 Here're some of the project's best features:
 
-*   \*\*Immersive Experiences\*\*: Travelers can book a wide range of experiences offered by locals including homestays workshops guided tours and more. These experiences are designed to provide an authentic and culturally enriching journey fostering cross-cultural understanding and appreciation.
-*   \*\*Preservation of Cultural Heritage\*\*: The platform serves as a means to preserve and promote endangered cultures and traditions. By connecting travelers with local communities these unique experiences receive much-needed exposure and support ensuring their continued survival and transmission to future generations.
-*   \*\*Sustainable Tourism\*\*: Experiential Travel Marketplace promotes sustainable and responsible tourism practices. Experiences are curated to minimize environmental impact while maximizing positive economic and social effects on local communities.
-*   \*\*Community Empowerment\*\*: The platform empowers local communities by providing them with a platform to showcase and monetize their cultural offerings. This not only generates income opportunities but also instills a sense of pride and appreciation for their heritage.
-*   \*\*Personalized Travel Planning\*\*: Travelers can create customized itineraries by combining various experiences based on their interests preferences and travel dates. The platform's search and filtering capabilities make it easy to find the perfect experiences.
-*   \*\*User Reviews and Ratings\*\*: Travelers can leave reviews and ratings for the experiences they've attended enabling others to make informed decisions and fostering a transparent and trustworthy community.
-*   \*\*Local Guides and Experts\*\*: Many experiences are led by local guides and experts who possess intimate knowledge of the region's history traditions and customs providing travelers with invaluable insights and context.
-*   \*\*Virtual Experiences\*\*: For those unable to travel physically the platform offers virtual experiences such as online workshops cultural demonstrations and live-streamed events bridging the gap between cultures and making these experiences accessible to a global audience.
+*   **Immersive Experiences**: Travelers can book a wide range of experiences offered by locals including homestays workshops guided tours and more. These experiences are designed to provide an authentic and culturally enriching journey fostering cross-cultural understanding and appreciation.
+*   **Preservation of Cultural Heritage**: The platform serves as a means to preserve and promote endangered cultures and traditions. By connecting travelers with local communities these unique experiences receive much-needed exposure and support ensuring their continued survival and transmission to future generations.
+*   **Sustainable Tourism**: Experiential Travel Marketplace promotes sustainable and responsible tourism practices. Experiences are curated to minimize environmental impact while maximizing positive economic and social effects on local communities.
+*   **Community Empowerment**: The platform empowers local communities by providing them with a platform to showcase and monetize their cultural offerings. This not only generates income opportunities but also instills a sense of pride and appreciation for their heritage.
+*   **Personalized Travel Planning**: Travelers can create customized itineraries by combining various experiences based on their interests preferences and travel dates. The platform's search and filtering capabilities make it easy to find the perfect experiences.
+*   **User Reviews and Ratings***: Travelers can leave reviews and ratings for the experiences they've attended enabling others to make informed decisions and fostering a transparent and trustworthy community.
+*   **Local Guides and Experts**: Many experiences are led by local guides and experts who possess intimate knowledge of the region's history traditions and customs providing travelers with invaluable insights and context.
+*   **Virtual Experiences**: For those unable to travel physically the platform offers virtual experiences such as online workshops cultural demonstrations and live-streamed events bridging the gap between cultures and making these experiences accessible to a global audience.
 
 <h2>🛠️ Installation Steps:</h2>
 
