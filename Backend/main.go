@@ -430,6 +430,54 @@ func GetBookingUsername(w http.ResponseWriter, r *http.Request) {
 	w.Write(booksJSON)
 }
 
+func GetBookingPost(w http.ResponseWriter, r *http.Request) {
+	var peep PostId
+	err := json.NewDecoder(r.Body).Decode(&peep)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	client := db.NewClient()
+	if err := client.Prisma.Connect(); err != nil {
+		http.Error(w, "Failed to connect to database", http.StatusInternalServerError)
+		return
+	}
+	defer func() {
+		if err := client.Prisma.Disconnect(); err != nil {
+			panic(err)
+		}
+	}()
+	ctx := context.Background()
+	foundPost, err := client.Post.FindUnique(
+		db.Post.PostID.Equals(peep.PostId),
+	).Exec(ctx)
+	if err != nil {
+		http.Error(w, "Failed to find post", http.StatusInternalServerError)
+		return
+	}
+
+	if foundPost == nil {
+		http.Error(w, "Post not found", http.StatusNotFound)
+		return
+	}
+	books, err := client.Book.FindMany(
+		db.Book.PostID.Equals(foundPost.PostID),
+	).Exec(ctx)
+	if err != nil {
+		http.Error(w, "Failed to retrieve books", http.StatusInternalServerError)
+		return
+	}
+	booksJSON, err := json.Marshal(books)
+	if err != nil {
+		http.Error(w, "Failed to marshal JSON", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(booksJSON)
+}
+
 func main() {
 	r := mux.NewRouter()
 
@@ -441,6 +489,8 @@ func main() {
 	r.HandleFunc("/createBooking", CreateBook).Methods("POST")
 	r.HandleFunc("/getUserInfo", GetUserInfo).Methods("GET")
 	r.HandleFunc("/getBookingUsername", GetBookingUsername).Methods("GET")
+	r.HandleFunc("/getBookingByPost", GetBookingPost).Methods("GET")
+
 	corsHandler := cors.Default().Handler(r)
 
 	http.ListenAndServe(":4000", corsHandler)
