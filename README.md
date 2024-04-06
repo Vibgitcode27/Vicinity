@@ -19,40 +19,43 @@ Here're some of the project's best features:
 *   **Local Guides and Experts**: Many experiences are led by local guides and experts who possess intimate knowledge of the region's history traditions and customs providing travelers with invaluable insights and context.
 *   **Virtual Experiences**: For those unable to travel physically the platform offers virtual experiences such as online workshops cultural demonstrations and live-streamed events bridging the gap between cultures and making these experiences accessible to a global audience.
 
+<h2>🐹 GoLang Setup:</h2>
+*  The application backend is implemented in GoLang. We chose GoLang over Express and other languages due to its performance, concurrency support, and simplicity.
+* Our GoLang backend utilizes Prisma as an ORM with CockroachDB as the database.
+* To set up the GoLang backend code, located in the backend folder of the repository, you need to configure it with a database URL. This URL should point to a PostgreSQL cloud instance that supports Prisma, such as Neon, CockroachDB, ElephantSQL, etc.
+* Currently, our GoLang backend routes can be accessed at: [http://ec2-35-154-46-106.ap-south-1.compute.amazonaws.com:4000](http://ec2-35-154-46-106.ap-south-1.compute.amazonaws.com:4000)
+
+<h2>Amazon S3 Setup</h2>
+* For image storage and retrieval, we are using Amazon S3.
+* Setting up the necessary IAM roles.
+* Setting up the necessary environment variables in the `.env.example` file.
+* Currently, our Amazon S3 backend can be accessed at: [http://ec2-13-126-223-141.ap-south-1.compute.amazonaws.com:4000](http://ec2-13-126-223-141.ap-south-1.compute.amazonaws.com:4000)
+
+
 <h2>🛠️ Installation Steps:</h2>
 
 <p>1. Clone the repository:</p>
 
 ```
-git clone https://github.com/your-username/experiential-travel-marketplace.git
+https://github.com/Wittyhacks4CR006/WH055_MindNotWorking
 ```
 
-<p>2. Navigate to the project directory:</p>
-
-```
-cd experiential-travel-marketplace
-```
+<p>2. Navigate to the project root directory:</p>
 
 <p>3. Install dependencies:</p>
-
-```
-npm install
-```
 
 ```
 npm install --global yarn
 ```
 
-<p>5. Set up the environment variables:</p>
-
 ```
-cp .env.example .env
+yarn install
 ```
 
-<p>6. Start the development server:</p>
+<p>4. Start the development server:</p>
 
 ```
-npm run dev
+yarn run dev
 ```
 
 <h2>🍰 Contribution Guidelines:</h2>
