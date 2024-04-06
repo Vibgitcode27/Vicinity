@@ -1,11 +1,19 @@
 import { Flex, Card, Avatar, Progress, Image, Typography, Button } from 'antd';
 import { AliwangwangFilled } from '@ant-design/icons';
 import { BellOutlined, MessageOutlined } from '@ant-design/icons';
+import { useAppDispatch , useAppSelector } from '@/lib/hooks';
 
 import asset1 from "../assets/asset1.jpg"
 import asset2 from "../assets/asset5.webp"
 
 export function VicinityPage() {
+
+    const title = useAppSelector(state => state.getPostUser.RequirementsAndRestriction);
+    const duration = useAppSelector(state => state.getPostUser.Duration);
+    const cost = useAppSelector(state => state.getPostUser.Cost);
+    const description = useAppSelector(state => state.getPostUser.Description);
+    const location = useAppSelector(state => state.getPostUser.Location);
+
     return (
         <Flex align='center' justify='center' style={{ width: "100%", height: "auto" }}>
             <Card style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -13,21 +21,21 @@ export function VicinityPage() {
                     <Image style={{ borderRadius: "20px" }} src={asset1.src}></Image>
                 </Flex>
                 <Flex align='center' justify='center' vertical>
-                    <Typography.Title level={2} style={{ color: "#0015f6c1", marginTop: "30px" }}>Experience the Ghavan Ghatla</Typography.Title>
-                    <Typography.Text style={{ fontSize: "16px", color: "gray", marginTop: "30px", width: "70%" }}>Indulge in the delightful flavors of Ghavan Ghatla, a beloved Marathi dish that offers a harmonious blend of textures and spices. Ghavan, thin crepe-like pancakes made from rice flour and coconut, are skillfully cooked until crisp yet tender. Paired with a rich coconut-based curry infused with mustard seeds, cumin, and aromatic spices, Ghavan Ghatla offers a satisfying culinary experience. Whether enjoyed for breakfast, lunch, or dinner, this dish promises a taste of authentic Marathi cuisine that is both comforting and flavorful.</Typography.Text>
+                    <Typography.Title level={2} style={{ color: "#0015f6c1", marginTop: "30px" }}>{title}</Typography.Title>
+                    <Typography.Text style={{ fontSize: "16px", color: "gray", marginTop: "30px", width: "70%" }}>{description}</Typography.Text>
                 </Flex>
                 <br />
                 <Flex align='center' justify="space-between" style={{ marginLeft: "140px" }}>
                     <Flex >
                         <Card>
                             <Typography.Title level={4} style={{ color: "black", width: "250px" }}>Duration :- </Typography.Title>
-                            <Typography.Text style={{ fontSize: "16px", color: "coral", marginTop: "33px", width: "70%" }}> 2 hours</Typography.Text>
+                            <Typography.Text style={{ fontSize: "16px", color: "coral", marginTop: "33px", width: "70%" }}>{duration}</Typography.Text>
                         </Card>
                     </Flex>
                     <Flex>
                         <Card>
                             <Typography.Title level={4} style={{ color: "black", marginTop: "30px", width: "250px" }}>Pricings :- </Typography.Title>
-                            <Typography.Text style={{ fontSize: "16px", color: "coral", marginTop: "33px", width: "70%" }}>1660/- Rs</Typography.Text>
+                            <Typography.Text style={{ fontSize: "16px", color: "coral", marginTop: "33px", width: "70%" }}>{cost}</Typography.Text>
                         </Card>
                     </Flex>
                 </Flex>

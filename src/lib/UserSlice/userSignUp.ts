@@ -32,13 +32,13 @@ export const signUpUserSlice = createSlice({
   initialState : initialSignUpState,
   reducers: {
     signUpUser: (state , action) => {
-        state.Lname += action.payload.Lname,
-        state.Fname += action.payload.Fname,
-        state.Location += action.payload.Location,
-        state.Bio += action.payload.Bio,
-        state.Email += action.payload.Email,
-        state.Username += action.payload.Username,
-        state.ProfilePic += action.payload.ProfilePic
+        state.Lname = action.payload.Lname,
+        state.Fname = action.payload.Fname,
+        state.Location = action.payload.Location,
+        state.Bio = action.payload.Bio,
+        state.Email = action.payload.Email,
+        state.Username = action.payload.Username,
+        state.ProfilePic = action.payload.ProfilePic
       },
   },
 })
@@ -47,7 +47,7 @@ export interface UserPostState {
   Picture : string ,
   Description : string ,
   Duration : string ,
-  RequiermentsAndRestriction : string ,
+  RequirementsAndRestriction : string ,
   Location : string ,
   Cost : string ,
   Username : string ,
@@ -57,7 +57,7 @@ const initialUserPostState: UserPostState = {
   Picture : "",
   Description : "",
   Duration : "",
-  RequiermentsAndRestriction : "",
+  RequirementsAndRestriction : "",
   Location : "",
   Cost : "",
   Username : "",
@@ -68,13 +68,13 @@ export const postUserSlice = createSlice({
   initialState : initialUserPostState,
   reducers: {
     postUser: (state , action) => {
-        state.Picture += action.payload.Picture,
-        state.Description += action.payload.Description,
-        state.Duration += action.payload.Duration,
-        state.RequiermentsAndRestriction += action.payload.RequiermentsAndRestriction,
-        state.Location += action.payload.Location,
-        state.Cost += action.payload.Cost,
-        state.Username += action.payload.Username
+        state.Picture = action.payload.Picture,
+        state.Description = action.payload.Description,
+        state.Duration = action.payload.Duration,
+        state.RequirementsAndRestriction = action.payload.RequirementsAndRestriction,
+        state.Location = action.payload.Location,
+        state.Cost = action.payload.Cost,
+        state.Username = action.payload.Username
       },
   },
 })
@@ -83,7 +83,7 @@ export interface UserGetPostState {
   Picture : string ,
   Description : string ,
   Duration : string ,
-  RequiermentsAndRestriction : string ,
+  RequirementsAndRestriction : string ,
   Location : string ,
   Cost : string ,
 }
@@ -92,7 +92,7 @@ const initialUserGetPostState : UserGetPostState = {
   Picture : "",
   Description : "",
   Duration : "",
-  RequiermentsAndRestriction : "",
+  RequirementsAndRestriction : "",
   Location : "",
   Cost : "",
 }
@@ -102,12 +102,12 @@ export const getPostUserSlice = createSlice({
   initialState : initialUserGetPostState,
   reducers: {
     getPostUser: (state , action) => {
-        state.Picture += action.payload.Picture,
-        state.Description += action.payload.Description,
-        state.Duration += action.payload.Duration,
-        state.RequiermentsAndRestriction += action.payload.RequiermentsAndRestriction,
-        state.Location += action.payload.Location,
-        state.Cost += action.payload.Cost
+        state.Picture = action.payload.Picture,
+        state.Description = action.payload.Description,
+        state.Duration = action.payload.Duration,
+        state.RequirementsAndRestriction = action.payload.RequirementsAndRestriction,
+        state.Location = action.payload.Location,
+        state.Cost = action.payload.Cost
       },
   },
 })
