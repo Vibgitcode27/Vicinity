@@ -29,16 +29,17 @@ Here're some of the project's best features:
 *   **Virtual Experiences**: For those unable to travel physically the platform offers virtual experiences such as online workshops cultural demonstrations and live-streamed events bridging the gap between cultures and making these experiences accessible to a global audience.
 
 <h2>🐹 GoLang Setup:</h2>
-*  The application backend is implemented in GoLang. We chose GoLang over Express and other languages due to its performance, concurrency support, and simplicity.
-* Our GoLang backend utilizes Prisma as an ORM with CockroachDB as the database.
-* To set up the GoLang backend code, located in the backend folder of the repository, you need to configure it with a database URL. This URL should point to a PostgreSQL cloud instance that supports Prisma, such as Neon, CockroachDB, ElephantSQL, etc.
-* Currently, our GoLang backend routes can be accessed at: [http://ec2-35-154-46-106.ap-south-1.compute.amazonaws.com:4000](http://ec2-35-154-46-106.ap-south-1.compute.amazonaws.com:4000)
+-  The application backend is implemented in GoLang. <br>
+-  We chose GoLang over Express and other languages due to its performance, concurrency support, and simplicity. <br>
+- Our GoLang backend utilizes Prisma as an ORM with CockroachDB as the database. <br>
+- To set up the GoLang backend code, located in the backend folder of the repository, you need to configure it with a database URL. This URL should point to a PostgreSQL cloud instance that supports Prisma, such as Neon, CockroachDB, ElephantSQL, etc. <br>
+- Currently, our GoLang backend routes can be accessed at: [http://ec2-35-154-46-106.ap-south-1.compute.amazonaws.com:4000](http://ec2-35-154-46-106.ap-south-1.compute.amazonaws.com:4000)<br>
 
 <h2> <img src="icons8-amazon-s3-48.png" alt="Image" width="24" height="24"> Amazon S3 Setup </h2>
-* For image storage and retrieval, we are using Amazon S3.
-* Setting up the necessary IAM roles.
-* Setting up the necessary environment variables in the `.env.example` file.
-* Currently, our Amazon S3 backend can be accessed at: [http://ec2-13-126-223-141.ap-south-1.compute.amazonaws.com:4000](http://ec2-13-126-223-141.ap-south-1.compute.amazonaws.com:4000)
+- For image storage and retrieval, we are using Amazon S3. <br>
+- Setting up the necessary IAM roles. <br>
+- Setting up the necessary environment variables in the `.env.example` file. <br>
+- Currently, our Amazon S3 backend can be accessed at: [http://ec2-13-126-223-141.ap-south-1.compute.amazonaws.com:4000](http://ec2-13-126-223-141.ap-south-1.compute.amazonaws.com:4000) <br>
 
 
 <h2>🛠️ Installation Steps:</h2>
@@ -66,10 +67,6 @@ yarn install
 ```
 yarn run dev
 ```
-
-<h2>🍰 Contribution Guidelines:</h2>
-
-We welcome contributions to enhance the Experiential Travel Marketplace! If you'd like to contribute please follow these steps: Fork the repository. Create a new branch for your feature or bug fix. Make your changes and commit them with descriptive commit messages. Push your changes to your forked repository. Open a pull request against the main repository describing your changes in detail.
 
 ## Contributing
 
