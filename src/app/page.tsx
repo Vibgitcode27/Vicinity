@@ -52,8 +52,6 @@ export default function Home() {
                 <SignUpButton redirectUrl="/welcome"/>
               </Button>
           </Flex>
-          
-          <SignOutButton/>
       </Card>
       </Flex>
   );
