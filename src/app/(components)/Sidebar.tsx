@@ -1,7 +1,7 @@
 import "../styles/dashboard.css"
 import { Flex, Menu ,Progress } from "antd";
 import React from "react";
-import { AliwangwangFilled , WindowsFilled , RocketFilled , OrderedListOutlined , CarryOutFilled , ProfileFilled, SettingFilled } from "@ant-design/icons";
+import { AliwangwangFilled , WindowsFilled , RocketFilled , CompassFilled , FireFilled,} from "@ant-design/icons";
 
 const items = [
     {
@@ -11,21 +11,16 @@ const items = [
     },
     {
         key : 2 ,
-        icon : <CarryOutFilled  className="sidebar-icons"/> ,
-        label : "My Orders"
+        icon : <CompassFilled className="sidebar-icons"/> ,
+        label : "Explore"
     } ,
     {
         key : 3 ,
-        icon : <ProfileFilled  className="sidebar-icons"/> ,
-        label : "ToDo"
+        icon : <FireFilled className="sidebar-icons"/> ,
+        label : "For You"
     } ,
     {
         key : 4 ,
-        icon : <SettingFilled  className="sidebar-icons"/> ,
-        label : "Setting" 
-    } ,
-    {
-        key : 5 ,
         icon : <RocketFilled  className="sidebar-icons"/> ,
         label : "Logout" 
     } ,
