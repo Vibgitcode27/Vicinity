@@ -5,7 +5,7 @@ import "../../styles/dashboard.css"
 import React, { useState } from 'react';
 import { MenuFoldOutlined , MenuUnfoldOutlined } from '@ant-design/icons';
 import { Layout, Button, Flex , Card , Progress } from 'antd';
-import { AliwangwangFilled , BellOutlined , MessageOutlined } from '@ant-design/icons';
+import { AliwangwangFilled } from '@ant-design/icons';
 
 import { MainHeader } from "../../(components)/Header"
 import { MainContent } from "../../(components)/MainContent"

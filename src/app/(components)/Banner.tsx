@@ -4,7 +4,7 @@ import { AliwangwangFilled } from '@ant-design/icons';
 
 export function Banner() {
     return (
-        <Card style={{ height: 260 }}>
+        <Card style={{ height: 260 , borderRadius : '15px' }}>
             <Flex vertical gap="30px">
                 <Flex vertical align="flex-start">
                     <Typography.Title level={3} style={{ fontWeight: 600 }}>
@@ -46,7 +46,6 @@ export function Banner() {
                             </Flex>
                         </Flex>
                     </Card>
-                    
                 </div>
             </Flex>
         </Card>
