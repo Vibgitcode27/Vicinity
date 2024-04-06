@@ -34,7 +34,7 @@ Here're some of the project's best features:
 * To set up the GoLang backend code, located in the backend folder of the repository, you need to configure it with a database URL. This URL should point to a PostgreSQL cloud instance that supports Prisma, such as Neon, CockroachDB, ElephantSQL, etc.
 * Currently, our GoLang backend routes can be accessed at: [http://ec2-35-154-46-106.ap-south-1.compute.amazonaws.com:4000](http://ec2-35-154-46-106.ap-south-1.compute.amazonaws.com:4000)
 
-<h2> ![Image](icons8-amazon-s3-48.png "Image") Amazon S3 Setup </h2>
+<h2> <img src="icons8-amazon-s3-48.png" alt="Image"> Amazon S3 Setup </h2>
 * For image storage and retrieval, we are using Amazon S3.
 * Setting up the necessary IAM roles.
 * Setting up the necessary environment variables in the `.env.example` file.
