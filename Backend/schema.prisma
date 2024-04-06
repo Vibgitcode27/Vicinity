@@ -18,6 +18,7 @@ model User {
   Username       String    @unique
   posts          Post[]
   comments       Comment[]
+  books          Book[]
 }
 
 model Post {
@@ -31,6 +32,7 @@ model Post {
   comments                   Comment[]
   user                       User      @relation(fields: [UserID], references: [UserID])
   UserID                     String
+  books                      Book[]
 }
 
 model Comment {
@@ -40,4 +42,13 @@ model Comment {
   UserID    String
   post      Post   @relation(fields: [PostID], references: [PostID])
   PostID    String
+}
+
+model Book {
+  BookID String @id @default(cuid())
+  Title  String
+  post   Post   @relation(fields: [PostID], references: [PostID])
+  PostID String
+  user   User   @relation(fields: [UserID], references: [UserID])
+  UserID String
 }
