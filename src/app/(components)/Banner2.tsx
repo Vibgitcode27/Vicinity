@@ -4,7 +4,7 @@ import image from "../assets/dashboard_png.png";
 
 export function Banner2() {
     return (
-        <Card style={{ height: 260, padding: "20px" , backgroundColor : "#ffd7d9" , border :"2px solid #ff7982" , borderRadius : "15px"}}>
+        <Card style={{ height: 260, padding: "20px" , backgroundColor : "#ffe5e6" , border :"2px solid #ff979e" , borderRadius : "15px"}}>
             <Flex>
                 <Flex vertical gap="30px">
                     <Flex vertical align="flex-start">
@@ -17,8 +17,8 @@ export function Banner2() {
                     </Flex>
 
                     <Flex gap="large">
-                        <Button size="large">
-                            Create Vicinity
+                        <Button size="large" style={{ backgroundColor : "#0015f6c1"}}>
+                            <span style={{ color : "white" }}>Create Vicinity</span>
                         </Button>
                     </Flex>
                 </Flex>
