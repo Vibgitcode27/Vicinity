@@ -1,4 +1,4 @@
-# Experiential Travel Marketplace 
+# Vicinity - An Experiential Travel Marketplace 
 
 ## Introduction
 
