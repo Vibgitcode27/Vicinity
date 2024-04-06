@@ -170,12 +170,63 @@ func GetPostByCity(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func GetPostByUsername(w http.ResponseWriter, r *http.Request) {
+	var peep Dude
+	err := json.NewDecoder(r.Body).Decode(&peep)
+	if err != nil {
+		http.Error(w, "Failed to decode request body", http.StatusBadRequest)
+		return
+	}
+	client := db.NewClient()
+	if err := client.Prisma.Connect(); err != nil {
+		http.Error(w, "Failed to connect to database", http.StatusInternalServerError)
+		return
+	}
+	defer func() {
+		if err := client.Prisma.Disconnect(); err != nil {
+			panic(err)
+		}
+	}()
+
+	ctx := context.Background()
+	foundUser, err := client.User.FindUnique(
+		db.User.Username.Equals(peep.Username),
+	).Exec(ctx)
+	if err != nil {
+		http.Error(w, "Failed to find user", http.StatusInternalServerError)
+		return
+	}
+	if foundUser == nil {
+		http.Error(w, "User not found", http.StatusNotFound)
+		return
+	}
+	posts, err := client.Post.FindMany(
+		db.Post.UserID.Equals(foundUser.UserID),
+	).Exec(ctx)
+	if err != nil {
+		http.Error(w, "Failed to fetch posts", http.StatusInternalServerError)
+		return
+	}
+	data, err := json.Marshal(posts)
+	if err != nil {
+		http.Error(w, "Failed to marshal JSON", http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	_, err = w.Write(data)
+	if err != nil {
+		http.Error(w, "Failed to write response", http.StatusInternalServerError)
+		return
+	}
+}
+
 func main() {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/postuser", PostUser).Methods("POST")
 	r.HandleFunc("/getPosts", GetAllPosts).Methods("GET")
 	r.HandleFunc("/getPostsByCity", GetPostByCity).Methods("GET")
+	r.HandleFunc("/getPostsByUsername", GetPostByUsername).Methods("GET")
 
 	corsHandler := cors.Default().Handler(r)
 
