@@ -1,9 +1,10 @@
 "use client"
 
 import { Avatar, Typography } from 'antd';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Flex, Card, Progress } from 'antd';
 import { BellOutlined, MessageOutlined } from '@ant-design/icons';
+import { useAppDispatch , useAppSelector } from '@/lib/hooks';
 
 import asset1 from "../assets/asset1.jpg"
 import asset2 from "../assets/asset5.webp"
@@ -11,6 +12,15 @@ import asset2 from "../assets/asset5.webp"
 const { Meta } = Card;
 
 export function SideProfile() {
+
+  useEffect(() => {
+    // dispatch(fetchApiData())
+  }, [])
+
+  const Firstname = useAppSelector(state => state.signUpUser.Fname);
+  const Lastname = useAppSelector(state => state.signUpUser.Lname);
+  const username = useAppSelector(state => state.signUpUser.Username);
+  const bio = useAppSelector(state => state.signUpUser.Bio);
 
   return (
     <Card
@@ -40,15 +50,15 @@ export function SideProfile() {
         <MessageOutlined className='profile-icons' />
       </Flex>
       <Flex align='center' justify='center' vertical style={{ margin: "10px" }}>
-        <Typography.Title level={4} style={{ padding: "0", margin: "0", fontWeight: 600 }}>Vibhor Phalke</Typography.Title>
-        <Typography.Text>vibgitcode27</Typography.Text>
+        <Typography.Title level={4} style={{ padding: "0", margin: "0", fontWeight: 600 }}>{Firstname} {Lastname}</Typography.Title>
+        <Typography.Text>{username}</Typography.Text>
       </Flex>
       <Flex align='center' justify='center' style={{ margin: "10px" }}>
       <Card
         hoverable
         style={{ width: 240 }}
        >
-          <Meta title="Your Bio" description="Fueling connections and creativity through words and community on a social media platform designed for meaningful engagement and expression." />
+          <Meta title="Your Bio" description={bio} />
       </Card>
       </Flex>
         <Typography.Title style={{ marginTop: "20px" }} level={5} >Current Vicinities</Typography.Title>

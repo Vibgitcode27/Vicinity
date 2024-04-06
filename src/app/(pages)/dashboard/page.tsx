@@ -2,7 +2,7 @@
 import "../../styles/dashboard.css"
 import { Avatar, Typography } from 'antd';
 import "../../styles/dashboard.css"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FilterFilled, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Layout, Button, Flex, Card, Progress } from 'antd';
 import { AliwangwangFilled } from '@ant-design/icons';
@@ -16,6 +16,12 @@ import { RocketFilled, LogoutOutlined, CompassFilled, FireFilled, } from "@ant-d
 import { Explore } from "@/app/(components)/Explore";
 import { ForYou } from "@/app/(components)/ForYou";
 import { Logout } from "@/app/(components)/Logout";
+import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
+
+// Redux Imports
+import { useAppDispatch , useAppSelector } from "@/lib/hooks";
+import { signUpUser } from "@/lib/UserSlice/userSignUp";
 
 const items = [
   {
@@ -45,11 +51,55 @@ export default function Dashboard() {
 
   const [collapsed, setCollapsed] = useState<boolean>(true)
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
-
+  
   const handleMenuClick = (index: number) => {
     setSelectedIndex(index);
     console.log(selectedIndex);
   }
+  const { user } = useUser()
+  const dispatch = useAppDispatch();
+  let count = 1;
+
+  const fetchData = async () => {
+    try {
+      console.log(user?.username);
+      const response = await fetch("http://ec2-35-154-46-106.ap-south-1.compute.amazonaws.com:4000/getUserInfo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ Username: user?.username })
+      });
+      
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      
+      const data = await response.json();
+      
+      let tobeDispatched = {
+        Username: data?.Username,
+        Fname: data?.FirstName,
+        Lname: data?.LastName,
+        Bio: data?.Bio,
+        Location: data?.Location,
+        ProfilePic: data?.ProfilePic
+      };
+      
+      // Dispatch to your state or store here
+      dispatch(signUpUser(tobeDispatched));
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      // Handle errors appropriately
+    }
+  };
+  if(count === 1)
+  {
+    fetchData();
+    count --;
+  }
+
+
 
   return (
     <Layout>

@@ -44,7 +44,7 @@ export default function Home() {
             <h1 style={{ fontSize : "30px"}}>Welcome to Vicinity</h1>
           </Flex>
           <Flex align='center' vertical>
-            <Button type='primary' style={{ backgroundColor : "#0015f6c1" , marginBottom : "10px" , width : "100%"}}>
+            <Button type='primary' style={{ backgroundColor : "#0015f6c1" , marginBottom : "10px" , width : "100%"}}> 
                 <SignInButton redirectUrl="/dashboard"/>
               </Button>
 
