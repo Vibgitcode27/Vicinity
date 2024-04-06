@@ -11,8 +11,8 @@
   <img src="https://img.shields.io/badge/Docker-2496ED?style&logo=docker&logoColor=white&label=Docker" alt="Docker">
   <img src="https://img.shields.io/badge/Amazon%20EC2-FF9900?style&logo=amazon-ec2&logoColor=white&label=Amazon%20EC2" alt="Amazon EC2">
   <img src="https://img.shields.io/badge/TypeScript-007ACC?style&logo=typescript&logoColor=white&label=TypeScript" alt="TypeScript">
-  <img src="https://img.shields.io/badge/Amazon_S3-5272A8?style=for-the-badge&logo=amazon-s3&logoColor=white&label=Amazon%20S3" alt="Amazon S3">
-  <img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white&label=Go" alt="Go">
+  <img src="https://img.shields.io/badge/Amazon_S3-5272A8?style=flat-square&logo=amazon-s3&logoColor=white&label=Amazon%20S3" alt="Amazon S3">
+  <img src="https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white&style=flat-square" alt="Go">
 </p>
   
 <h2>Features</h2>
@@ -34,7 +34,7 @@ Here're some of the project's best features:
 * To set up the GoLang backend code, located in the backend folder of the repository, you need to configure it with a database URL. This URL should point to a PostgreSQL cloud instance that supports Prisma, such as Neon, CockroachDB, ElephantSQL, etc.
 * Currently, our GoLang backend routes can be accessed at: [http://ec2-35-154-46-106.ap-south-1.compute.amazonaws.com:4000](http://ec2-35-154-46-106.ap-south-1.compute.amazonaws.com:4000)
 
-<h2>Amazon S3 Setup</h2>
+<h2> <img src="icons8-amazon-s3-48.png" alt="Image" width="24" height="24"> Amazon S3 Setup </h2>
 * For image storage and retrieval, we are using Amazon S3.
 * Setting up the necessary IAM roles.
 * Setting up the necessary environment variables in the `.env.example` file.
