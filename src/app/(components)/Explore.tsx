@@ -3,6 +3,12 @@ import { AliwangwangFilled } from '@ant-design/icons';
 import { AudioOutlined } from '@ant-design/icons';
 import { Input, Space } from 'antd';
 import type { SearchProps } from 'antd/es/input/Search';
+import { useEffect, useState } from "react";
+import { useUser } from "@clerk/nextjs";
+import { Image } from 'antd';
+import { useAppDispatch } from "@/lib/hooks";
+import { getPostUser } from "@/lib/UserSlice/userSignUp";
+import { useRouter } from "next/navigation";
 
 const { Meta } = Card;
 const { Search } = Input;
@@ -20,6 +26,34 @@ const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?
 
 
 export function Explore() {
+
+    const { user } = useUser()
+    const [data, setData] = useState([])
+    const dispatch = useAppDispatch();
+    const router = useRouter();
+
+    function handleItemClick(item : any) {
+        dispatch(getPostUser(item));
+        console.log(item)
+        router.push("/vicinities");
+    }
+
+    async function Async() {
+        let data = await fetch("http://ec2-35-154-46-106.ap-south-1.compute.amazonaws.com:4000/getPosts", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+        let res = await data.json();
+        console.log(res)
+        setData(res);
+    }
+
+    useEffect(() => {
+        Async();
+    }, [user?.username])
+
     return (
         <Flex align="center" justify="center" style={{ width: "100%" }} vertical>
             <Flex >
@@ -31,7 +65,7 @@ export function Explore() {
                         <Avatar style={{ backgroundColor: "white" }} size={84} icon={<AliwangwangFilled style={{ color: "#0015f6c1" }} />} />
                         <Typography.Title level={4} style={{ color: "#0015f6c1", marginTop: "30px" }}>Vicinity</Typography.Title>
                     </Flex>
-                    <Space direction="vertical" style={{marginRight : "10px"}}>
+                    <Space direction="vertical" style={{ marginRight: "10px" }}>
                         <Search
                             placeholder="Search for vicinities"
                             allowClear
@@ -49,41 +83,28 @@ export function Explore() {
                 scrollbarWidth: "none",
                 msOverflowStyle: "none"
             }}>
-                <Flex>
-                    <Card
-                        style={{ width: "30vw", marginTop: "20px" }}
-                        cover={
-                            <img
-                                alt="example"
-                                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                            />
-                        }
-                    >
-                        <Meta
-                            title="Experience bhakri making"
-                            description="Bhakri making is an authentic culinary experience from Maharashtra, India. It involves handcrafting round, unleavened flatbreads made from coarse grains like jowar (sorghum) or bajra (pearl millet). Traditionally, the dough is kneaded with water and shaped into discs, then cooked on a hot griddle until golden brown and crispy. This process requires skill and patience, as the thickness and texture of the bhakri greatly influence its taste."
-                        />
-                        <Typography.Title level={5} style={{ marginTop: "20px" }}>Duration : 1hr</Typography.Title>
-                    </Card>
-                </Flex>
-
-                <Flex>
-                    <Card
-                        style={{ width: "30vw", marginTop: "20px" }}
-                        cover={
-                            <img
-                                alt="example"
-                                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                            />
-                        }
-                    >
-                        <Meta
-                            title="Experience bhakri making"
-                            description="Bhakri making is an authentic culinary experience from Maharashtra, India. It involves handcrafting round, unleavened flatbreads made from coarse grains like jowar (sorghum) or bajra (pearl millet). Traditionally, the dough is kneaded with water and shaped into discs, then cooked on a hot griddle until golden brown and crispy. This process requires skill and patience, as the thickness and texture of the bhakri greatly influence its taste."
-                        />
-                        <Typography.Title level={5} style={{ marginTop: "20px" }}>Duration : 1hr</Typography.Title>
-                    </Card>
-                </Flex>
+                {data.map((item, index) => (
+                    <Flex key={index}> {/* Assuming Flex is a valid component */}
+                        <Card
+                            style={{ width: "30vw", marginTop: "20px" }}
+                            cover={
+                                <Image
+                                    alt="example"
+                                    src={item.Picture}
+                                />
+                            }
+                            onClick={() => handleItemClick(item)} // Add onClick event here
+                        >
+                            <div onClick={() => console.log("Clicked")}>
+                                <Meta
+                                    title={item.RequirementsAndRestriction}
+                                    description={item.Description}
+                                />
+                            </div>
+                            <Typography.Title level={5} style={{ marginTop: "20px" }}>Duration : {item.Duration}</Typography.Title>
+                        </Card>
+                    </Flex>
+                ))}
             </div>
         </Flex>
     );
