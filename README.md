@@ -4,15 +4,15 @@
 
 <p id="description">Vicinity is a platform that connects travelers and tourists with locals offering unique immersive experiences in their respective regions. From living with traditional families to attending skill-based workshops and guided shopping excursions this marketplace aims to provide an authentic and enriching travel experience.</p>
 <p align="center">
-  <img src="https://img.shields.io/badge/Next.js-43853D?style&logo=next.js&logoColor=white" alt="shields">
-  <img src="https://img.shields.io/badge/Redux%20Toolkit-RTK-orange.svg?label=Redux%20Toolkit" alt="shields">
-  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style&logo=postgresql&logoColor=white" alt="PostgreSQL">
-  <img src="https://img.shields.io/badge/CockroachDB-634C5A?style&logo=cockroachdb&logoColor=white" alt="CockroachDB">
-  <img src="https://img.shields.io/badge/Docker-2496ED?style&logo=docker&logoColor=white" alt="shields">
-  <img src="https://img.shields.io/badge/Amazon%20EC2-FF9900?style&logo=amazon-ec2&logoColor=white" alt="shields">
-  <img src="https://img.shields.io/badge/TypeScript-007ACC?style&logo=typescript&logoColor=white" alt="TypeScript">
-  <img src="https://img.shields.io/badge/Amazon_S3-5272A8?style=for-the-badge&logo=amazon-s3&logoColor=white&label=AmazonS3" alt="shields">
-  <img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white&label=Go" alt="shields">
+  <img src="https://img.shields.io/badge/Next.js-43853D?style&logo=next.js&logoColor=white&label=Next.js" alt="Next.js">
+  <img src="https://img.shields.io/badge/Redux%20Toolkit-RTK-orange.svg?label=Redux%20Toolkit" alt="Redux Toolkit">
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style&logo=postgresql&logoColor=white&label=PostgreSQL" alt="PostgreSQL">
+  <img src="https://img.shields.io/badge/CockroachDB-634C5A?style&logo=cockroachdb&logoColor=white&label=CockroachDB" alt="CockroachDB">
+  <img src="https://img.shields.io/badge/Docker-2496ED?style&logo=docker&logoColor=white&label=Docker" alt="Docker">
+  <img src="https://img.shields.io/badge/Amazon%20EC2-FF9900?style&logo=amazon-ec2&logoColor=white&label=Amazon%20EC2" alt="Amazon EC2">
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style&logo=typescript&logoColor=white&label=TypeScript" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Amazon_S3-5272A8?style=for-the-badge&logo=amazon-s3&logoColor=white&label=Amazon%20S3" alt="Amazon S3">
+  <img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white&label=Go" alt="Go">
 </p>
   
 <h2>Features</h2>
