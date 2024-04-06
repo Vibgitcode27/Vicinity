@@ -11,7 +11,7 @@
   <img src="https://img.shields.io/badge/Docker-2496ED?style&logo=docker&logoColor=white&label=Docker" alt="Docker">
   <img src="https://img.shields.io/badge/Amazon%20EC2-FF9900?style&logo=amazon-ec2&logoColor=white&label=Amazon%20EC2" alt="Amazon EC2">
   <img src="https://img.shields.io/badge/TypeScript-007ACC?style&logo=typescript&logoColor=white&label=TypeScript" alt="TypeScript">
-  <img src="https://img.shields.io/badge/Amazon_S3-5272A8?style=for-the-badge&logo=amazon-s3&logoColor=white&label=Amazon%20S3&size=5" alt="Amazon S3">
+  <img src="https://img.shields.io/badge/Amazon_S3-5272A8?style=for-the-badge&logo=amazon-s3&logoColor=white&label=Amazon%20S3&size=0" alt="Amazon S3">
   <img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white&label=Go" alt="Go">
 </p>
   
