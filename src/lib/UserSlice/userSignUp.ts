@@ -43,6 +43,78 @@ export const signUpUserSlice = createSlice({
   },
 })
 
+export interface UserPostState {
+  Picture : string ,
+  Description : string ,
+  Duration : string ,
+  RequiermentsAndRestriction : string ,
+  Location : string ,
+  Cost : string ,
+  Username : string ,
+}
+
+const initialUserPostState: UserPostState = {
+  Picture : "",
+  Description : "",
+  Duration : "",
+  RequiermentsAndRestriction : "",
+  Location : "",
+  Cost : "",
+  Username : "",
+}
+
+export const postUserSlice = createSlice({
+  name: 'postUserSlice',
+  initialState : initialUserPostState,
+  reducers: {
+    postUser: (state , action) => {
+        state.Picture += action.payload.Picture,
+        state.Description += action.payload.Description,
+        state.Duration += action.payload.Duration,
+        state.RequiermentsAndRestriction += action.payload.RequiermentsAndRestriction,
+        state.Location += action.payload.Location,
+        state.Cost += action.payload.Cost,
+        state.Username += action.payload.Username
+      },
+  },
+})
+
+export interface UserGetPostState {
+  Picture : string ,
+  Description : string ,
+  Duration : string ,
+  RequiermentsAndRestriction : string ,
+  Location : string ,
+  Cost : string ,
+}
+
+const initialUserGetPostState : UserGetPostState = {
+  Picture : "",
+  Description : "",
+  Duration : "",
+  RequiermentsAndRestriction : "",
+  Location : "",
+  Cost : "",
+}
+
+export const getPostUserSlice = createSlice({
+  name: 'getPostUserSlice',
+  initialState : initialUserGetPostState,
+  reducers: {
+    getPostUser: (state , action) => {
+        state.Picture += action.payload.Picture,
+        state.Description += action.payload.Description,
+        state.Duration += action.payload.Duration,
+        state.RequiermentsAndRestriction += action.payload.RequiermentsAndRestriction,
+        state.Location += action.payload.Location,
+        state.Cost += action.payload.Cost
+      },
+  },
+})
+
+
 export const { signUpUser } = signUpUserSlice.actions
+export const { postUser } = postUserSlice.actions
+export const { getPostUser } = getPostUserSlice.actions
 
 export default signUpUserSlice.reducer;

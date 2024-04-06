@@ -58,7 +58,6 @@ export default function Dashboard() {
   }
   const { user } = useUser()
   const dispatch = useAppDispatch();
-  let count = 1;
 
   const fetchData = async () => {
     try {
@@ -93,11 +92,10 @@ export default function Dashboard() {
       // Handle errors appropriately
     }
   };
-  if(count === 1)
-  {
-    // fetchData();
-    count = count - 1;
-  }
+  
+  useEffect(() => {
+    fetchData();
+  } , [user?.username]);
 
 
 

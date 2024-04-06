@@ -1,10 +1,11 @@
 "use client"
 
 import { Avatar, Typography } from 'antd';
-import React, { useEffect } from 'react';
+import React, { useEffect , useState } from 'react';
 import { Flex, Card, Progress } from 'antd';
 import { BellOutlined, MessageOutlined } from '@ant-design/icons';
 import { useAppDispatch , useAppSelector } from '@/lib/hooks';
+import { useUser } from '@clerk/nextjs';
 
 import asset1 from "../assets/asset1.jpg"
 import asset2 from "../assets/asset5.webp"
@@ -13,10 +14,27 @@ const { Meta } = Card;
 
 export function SideProfile() {
 
-  useEffect(() => {
-    // dispatch(fetchApiData())
-  }, [])
+  const { user } = useUser();
+  const [title , setTitle ] = useState<string>();
+  const [cost , setCost ] = useState<string>()
+  async function Async() {
+    const response = await fetch("http://ec2-35-154-46-106.ap-south-1.compute.amazonaws.com:4000/getPostsByUsername", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ Username: user?.username })
+    })
 
+    let data = await response.json()
+    console.log("Card data" , data)
+    setTitle(data.RequirementsAndRestriction);
+    setCost(data.Cost);
+  }
+
+  useEffect(() => {
+    Async();
+  }, [])
   const Firstname = useAppSelector(state => state.signUpUser.Fname);
   const Lastname = useAppSelector(state => state.signUpUser.Lname);
   const username = useAppSelector(state => state.signUpUser.Username);
@@ -76,37 +94,10 @@ export function SideProfile() {
           backgroundSize: 'cover', // Optional: Set background size to cover for better fitting
           backgroundPosition: 'center', // Optional: Set background position to center
         }}>
-          <Typography.Title style={{ marginTop: "10px", width: "90px" }} level={5} >Title</Typography.Title>
-          <Typography.Text>More</Typography.Text>
+          <Typography.Title style={{ marginTop: "10px", width: "90px" }} level={5} >{title}</Typography.Title>
+          <Typography.Text></Typography.Text>
           <Flex align='center' justify='center' style={{ marginTop: "70px" }}>
-            <Typography.Text>50%</Typography.Text>
-          </Flex>
-        </Card>
-        <Card style={{ marginRight: "10px", backgroundColor: "#bff8ff", borderRadius: "15px" }}>
-          <Typography.Title style={{ marginTop: "10px", width: "90px" }} level={5} >Title</Typography.Title>
-          <Typography.Text>More</Typography.Text>
-          <Flex align='center' justify='center' style={{ marginTop: "70px" }}>
-            <Typography.Text>50%</Typography.Text>
-          </Flex>
-        </Card>
-        <Card style={{
-          marginRight: "10px",
-          borderRadius: "20px",
-          backgroundImage: `url(${asset2.src})`, // Use the imported image variable
-          backgroundSize: 'cover', // Optional: Set background size to cover for better fitting
-          backgroundPosition: 'center', // Optional: Set background position to center
-        }}>
-          <Typography.Title style={{ marginTop: "10px", width: "90px" }} level={5} >Current Projects</Typography.Title>
-          <Typography.Text>More</Typography.Text>
-          <Flex align='center' justify='center' style={{ marginTop: "70px" }}>
-            <Typography.Text>50%</Typography.Text>
-          </Flex>
-        </Card>
-        <Card style={{ marginRight: "10px", backgroundColor: "#bff8ff", borderRadius: "20px" }}>
-          <Typography.Title style={{ marginTop: "10px", width: "90px" }} level={5} >Current Projects</Typography.Title>
-          <Typography.Text>More</Typography.Text>
-          <Flex align='center' justify='center' style={{ marginTop: "70px" }}>
-            <Typography.Text>50%</Typography.Text>
+            <Typography.Text>{cost} /-</Typography.Text>
           </Flex>
         </Card>
       </Flex>
