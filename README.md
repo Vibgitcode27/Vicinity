@@ -41,6 +41,7 @@ Here're some of the project's best features:
 - Setting up the necessary environment variables in the `.env.example` file. <br>
 - Currently, our Amazon S3 backend can be accessed at: [http://ec2-13-126-223-141.ap-south-1.compute.amazonaws.com:4000](http://ec2-13-126-223-141.ap-south-1.compute.amazonaws.com:4000) <br>
 
+<h2> ![image](https://github.com/Wittyhacks4CR006/WH055_MindNotWorking/assets/113467836/be0f59f7-ebb1-434f-a555-8894ee66045c) Machine Learning </h2>
 
 <h2>🛠️ Installation Steps:</h2>
 
