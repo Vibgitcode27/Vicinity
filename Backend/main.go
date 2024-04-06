@@ -99,10 +99,44 @@ func PostUser(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("User created successfully"))
 }
 
+func GetAllPosts(w http.ResponseWriter, r *http.Request) {
+	client := db.NewClient()
+	if err := client.Prisma.Connect(); err != nil {
+		http.Error(w, "Failed to connect to database", http.StatusInternalServerError)
+		return
+	}
+	defer func() {
+		if err := client.Prisma.Disconnect(); err != nil {
+			panic(err)
+		}
+	}()
+
+	ctx := context.Background()
+
+	posts, err := client.Post.FindMany().Exec(ctx)
+
+	if err != nil {
+		http.Error(w, "Failed to fetch posts", http.StatusInternalServerError)
+		return
+	}
+	data, err := json.Marshal(posts)
+	if err != nil {
+		http.Error(w, "Failed to marshal JSON", http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	_, err = w.Write(data)
+	if err != nil {
+		http.Error(w, "Failed to write response", http.StatusInternalServerError)
+		return
+	}
+}
+
 func main() {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/postuser", PostUser).Methods("POST")
+	r.HandleFunc("/getPosts", GetAllPosts).Methods("GET")
 
 	corsHandler := cors.Default().Handler(r)
 
