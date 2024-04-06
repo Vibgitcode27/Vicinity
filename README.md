@@ -29,9 +29,9 @@ Here're some of the project's best features:
 *   **Virtual Experiences**: For those unable to travel physically the platform offers virtual experiences such as online workshops cultural demonstrations and live-streamed events bridging the gap between cultures and making these experiences accessible to a global audience.
 
 <h2>🐹 GoLang Setup:</h2>
--  The application backend is implemented in GoLang. 
--  We chose GoLang over Express and other languages due to its performance, concurrency support, and simplicity.
-- Our GoLang backend utilizes Prisma as an ORM with CockroachDB as the database.
+-  The application backend is implemented in GoLang. <br>
+-  We chose GoLang over Express and other languages due to its performance, concurrency support, and simplicity. <br>
+- Our GoLang backend utilizes Prisma as an ORM with CockroachDB as the database. <br>
 - To set up the GoLang backend code, located in the backend folder of the repository, you need to configure it with a database URL. This URL should point to a PostgreSQL cloud instance that supports Prisma, such as Neon, CockroachDB, ElephantSQL, etc.
 - Currently, our GoLang backend routes can be accessed at: [http://ec2-35-154-46-106.ap-south-1.compute.amazonaws.com:4000](http://ec2-35-154-46-106.ap-south-1.compute.amazonaws.com:4000)
 
