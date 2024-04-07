@@ -51,6 +51,7 @@ export function SideProfile() {
   const Lastname = useAppSelector(state => state.signUpUser.Lname);
   const username = useAppSelector(state => state.signUpUser.Username);
   const bio = useAppSelector(state => state.signUpUser.Bio);
+  const avatar = useAppSelector(state => state.signUpUser.ProfilePic)
 
   const handleCardClick = (item) => {
     dispatch(getPostUser(item));
@@ -75,11 +76,13 @@ export function SideProfile() {
         <Flex gap="small" wrap="wrap">
           <Progress type="circle" style={{ padding: "2px" }} percent={80} format={() => {
             return (
+              
               <Avatar
                 size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 90 }}
                 // icon={<AliwangwangFilled />}
-                src={asset1.src}
+                src={user?.imageUrl}
               />
+              
             )
           }} />
         </Flex>
@@ -105,7 +108,7 @@ export function SideProfile() {
         scrollbarWidth: "none",
         msOverflowStyle: "none"
       }}>
-        {data.map((item, index) => {
+        {data?.map((item, index) => {
           return (
             <Card
               key={index} // Key is added for better performance in React lists

@@ -32,7 +32,7 @@ export function ForYou() {
     const dispatch = useAppDispatch();
     const router = useRouter();
 
-    const location = useAppSelector(state => state.getPostUser.Location);
+    const location = useAppSelector(state => state.signUpUser.Location);
 
     function handleItemClick(item : any) {
         dispatch(getPostUser(item));
@@ -41,12 +41,13 @@ export function ForYou() {
     }
 
     async function Async() {
-        let data = await fetch("http://ec2-35-154-46-106.ap-south-1.compute.amazonaws.com:4000/getPostsByCity", {
+        console.log(location)
+        const data = await fetch("http://ec2-35-154-46-106.ap-south-1.compute.amazonaws.com:4000/getPostsByCity", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ Location: JSON.stringify(location) })
+            body: JSON.stringify({ Location: location })
         })
         let res = await data.json();
         console.log(res)
@@ -86,7 +87,7 @@ export function ForYou() {
                 scrollbarWidth: "none",
                 msOverflowStyle: "none"
             }}>
-                {data.map((item, index) => (
+                {data?.map((item, index) => (
                     <Flex key={index}> {/* Assuming Flex is a valid component */}
                         <Card
                             style={{ width: "30vw", marginTop: "20px" }}

@@ -83,7 +83,7 @@ export function Explore() {
                 scrollbarWidth: "none",
                 msOverflowStyle: "none"
             }}>
-                {data.map((item, index) => (
+                {data?.map((item, index) => (
                     <Flex key={index}> {/* Assuming Flex is a valid component */}
                         <Card
                             style={{ width: "30vw", marginTop: "20px" }}

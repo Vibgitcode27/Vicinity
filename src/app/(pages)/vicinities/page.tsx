@@ -73,7 +73,7 @@ export default function Vicinities() {
                         className="menu-bar"
                         selectedKeys={[String(selectedIndex + 1)]}
                     >
-                        {items.map(item => (
+                        {items?.map(item => (
                             <Menu.Item key={item.key} icon={item.icon} onClick={() => handleMenuClick(item.key - 1)}>
                                 {item.label}
                             </Menu.Item>

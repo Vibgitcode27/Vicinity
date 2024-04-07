@@ -43,7 +43,7 @@ export function Banner() {
                 </Flex>
 
                 <div style={{ overflowX: "auto", display: "flex" }}>
-                    {data.map((item) => (
+                    {data?.map((item) => (
                         <Card style={{ width: "300px", borderRadius: "25px", backgroundColor: "#150d87d4", marginRight: "20px" }}>
                             <Flex>
                                 <div style={{ height: "60px", width: "60px", background: "#6773fce2", borderRadius: "10px", display: "flex", alignContent: "center", justifyContent: "center" }} >
